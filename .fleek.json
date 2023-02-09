@@ -1,7 +1,7 @@
 {
   "build": {
     "image": "fleek/next-js:node-16",
-    "command": "npm install && npm run build && npm run export",
+    "command": "npm install --legacy-peer-deps && npm run build && npm run export",
     "publicDir": "out"
   }
 }
