@@ -1,0 +1,33 @@
+[
+  {
+
+    "chain": "Milkomeda",
+    "url": "https://milkomeda.com",
+    "logoUrl": "",
+    "vm": "EVM",
+    "vmVersion": "???",
+    "type": "Sidechain",
+    "walletsCompatibility": ["EVM", "Cardano"],
+    "bridgeUrls": ["https://cardano-bridge.milkomeda.com/bridge"],
+    "consensus": "IBFT",
+    "consensusVersion": "2.0",
+    "goal": "EVM compatibility",
+    "description": "Milkomeda delivers rollup technologies to leading Layer 1 ecosystems by offering\n the most popular smart contracting language, Solidity, while enhancing inter-blockchain interoperability,\n user experience, and developer traction all at the Layer 2 level.",
+    "USPs": ["wrapped smart contracts support"]
+  },
+  {
+    "chain": "Shareslake",
+    "url": "https://shareslake.com",
+    "logoUrl": "",
+    "vm": "UPLC",
+    "vmVersion": "V1",
+    "type": "Sidechain",
+    "wallets": ["Eternl"],
+    "bridgeUrls": ["https://dashboard.shareslake.com"],
+    "consensus": "OUROBOROS",
+    "consensusVersion": "PRAOS",
+    "goal": "Scale Cardano and support asset backed stable coins with predictable transaction fees (paid in RUSD)",
+    "description": "The first native stablecoin on Cardano. Discover the power of USD payments in Cardano.\n The future starts with RUSD, a fiat-backed stablecoin.",
+    "USPs": ["Fees paid in RUSD."]
+  }
+]

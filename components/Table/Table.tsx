@@ -1,7 +1,25 @@
 import React, { useState } from 'react';
+
+import list from '../../data/list.json';
+import { truncate } from '../../utils'
+
 export const Table: React.FC = () => {
 
-  const [wallet, setWallets] = useState(undefined);
+  const updatedList = list.map(item => {
+    return {...item, open: false}
+  });
+  const [chains, setChains] = useState(updatedList);
+
+  const onClickChain = (chainName: string) => {
+
+    const upds = chains.map(c => {
+      if (c.chain === chainName){
+        c.open = !c.open;
+      }
+      return c;
+    });
+    setChains(upds);
+  }
 
   return <div className="md:px-20 lg:px-40"
     >
@@ -11,313 +29,41 @@ export const Table: React.FC = () => {
       <table className="bg-transparent rounded-xl" >
         <thead className="bordered">
         <tr >
-          <th className="bg-gray-200 dark:bg-gray-900">Teams</th>
-          <th className="bg-gray-200 dark:bg-gray-900">1</th>
-          <th className="bg-gray-200 dark:bg-gray-900">2</th>
-          <th className="bg-gray-200 dark:bg-gray-900">3</th>
-          <th className="bg-gray-200 dark:bg-gray-900">4</th>
-          <th className="bg-gray-200 dark:bg-gray-900">5</th>
-          <th className="bg-gray-200 dark:bg-gray-900">6</th>
-          <th className="bg-gray-200 dark:bg-gray-900">7</th>
-          <th className="bg-gray-200 dark:bg-gray-900">8</th>
-          <th className="bg-gray-200 dark:bg-gray-900">9</th>
-          <th className="bg-gray-200 dark:bg-gray-900">Runs</th>
+          <th className="bg-gray-200 dark:bg-gray-900">Chain</th>
+          <th className="bg-gray-200 dark:bg-gray-900">VM</th>
+          <th className="bg-gray-200 dark:bg-gray-900">Type</th>
+          <th className="bg-gray-200 dark:bg-gray-900">Consensus</th>
+          <th className="bg-gray-200 dark:bg-gray-900">Url</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <th className="bg-gray-100 dark:bg-gray-800">Milwaukee Brewers</th>
-          <td>1</td>
-          <td>1</td>
-          <td>4</td>
-          <td>4</td>
-          <td>0</td>
-          <td>2</td>
-          <td>0</td>
-          <td>3</td>
-          <td>1</td>
-          <td>16</td>
-        </tr>
-        <tr className="">
-          <th className="bg-gray-100 dark:bg-gray-800"/>
-          {/* @ts-ignore*/}
-          <td colSpan="10" className="animate-fade">
-            +info addr_test1qzd8nqxxq5j2csg556vj8lw5stwfndfm3u96spulvfx6s7rmadzzye2knwvvfek9242eslxpwgjceh5smumvk2cgmsasy6pen4</td>
+        {
+          chains.map((item, index) => {
+            return <> <tr key={index} className="hover:opacity-70">
+              <th className="bg-gray-100 dark:bg-gray-800" onClick={() => onClickChain(item.chain)}>{item.chain}</th>
+              <td>${item.vm}{`${item.vm} ${item.vmVersion}`}</td>
+              <td>{item.type}</td>
+              <td>{`${item.consensus} ${item.consensusVersion}`}</td>
+              <td><a href={item.url} target="_blank" rel="noreferrer">{item.url}</a></td>
+            </tr>
+              {
+                item.open ? <tr className="w-auto">
+                  <th className="bg-gray-100 dark:bg-gray-800"/>
+                  {/* @ts-ignore*/}
+                  <td colSpan="4" className="animate-fade container" style={{maxWidth: '500px'}}>
+                    <div className="p-12 md:w-1/2 flex flex-col items-start">
+                      <span className="inline-block py-1 px-2 rounded bg-indigo-50 text-indigo-500 text-xs font-medium tracking-widest">{item.chain}</span>
+                      <h2 className="sm:text-3xl text-2xl title-font font-medium text-gray-900 mt-4 mb-4">{item.goal}</h2>
+                      <p className="leading-relaxed mb-8 ">{item.USPs}</p>
+                      <p className="leading-relaxed mb-8" >{item.description}</p>
+                    </div>
 
-        </tr>
-        <tr>
-          <th className="bg-gray-100 dark:bg-gray-800">Los Angles Dodgers</th>
-          <td>1</td>
-          <td>0</td>
-          <td>0</td>
-          <td>0</td>
-          <td>2</td>
-          <td>4</td>
-          <td>3</td>
-          <td>1</td>
-          <td>2</td>
-          <td>13</td>
-        </tr>
-        <tr>
-          <th className="bg-gray-100 dark:bg-gray-800">New York Mets</th>
-          <td>0</td>
-          <td>1</td>
-          <td>4</td>
-          <td>4</td>
-          <td>3</td>
-          <td>3</td>
-          <td>1</td>
-          <td>1</td>
-          <td>3</td>
-          <td>20</td>
-        </tr>
-        <tr>
-          <th className="bg-gray-100 dark:bg-gray-800">St. Louis Cardinals</th>
-          <td>0</td>
-          <td>3</td>
-          <td>4</td>
-          <td>3</td>
-          <td>1</td>
-          <td>1</td>
-          <td>0</td>
-          <td>3</td>
-          <td>2</td>
-          <td>17</td>
-        </tr>
-        <tr>
-          <th className="bg-gray-100 dark:bg-gray-800">Houston Astros</th>
-          <td>1</td>
-          <td>4</td>
-          <td>4</td>
-          <td>0</td>
-          <td>2</td>
-          <td>1</td>
-          <td>0</td>
-          <td>3</td>
-          <td>3</td>
-          <td>18</td>
-        </tr>
-        <tr>
-          <th className="bg-gray-100 dark:bg-gray-800">Toronto Blue Jays</th>
-          <td>1</td>
-          <td>0</td>
-          <td>1</td>
-          <td>1</td>
-          <td>0</td>
-          <td>1</td>
-          <td>0</td>
-          <td>1</td>
-          <td>4</td>
-          <td>9</td>
-        </tr>
-        <tr>
-          <th className="bg-gray-100 dark:bg-gray-800">Boston Red Sox</th>
-          <td>1</td>
-          <td>4</td>
-          <td>3</td>
-          <td>2</td>
-          <td>0</td>
-          <td>2</td>
-          <td>3</td>
-          <td>3</td>
-          <td>0</td>
-          <td>18</td>
-        </tr>
-        <tr>
-          <th className="bg-gray-100 dark:bg-gray-800">Chicago Cubs</th>
-          <td>0</td>
-          <td>3</td>
-          <td>3</td>
-          <td>0</td>
-          <td>4</td>
-          <td>0</td>
-          <td>0</td>
-          <td>3</td>
-          <td>3</td>
-          <td>16</td>
-        </tr>
-        <tr>
-          <th className="bg-gray-100 dark:bg-gray-800">Philadelphia Phillies</th>
-          <td>2</td>
-          <td>1</td>
-          <td>4</td>
-          <td>4</td>
-          <td>3</td>
-          <td>1</td>
-          <td>1</td>
-          <td>3</td>
-          <td>1</td>
-          <td>20</td>
-        </tr>
-        <tr>
-          <th className="bg-gray-100 dark:bg-gray-800">Chicago White Sox</th>
-          <td>0</td>
-          <td>3</td>
-          <td>4</td>
-          <td>0</td>
-          <td>1</td>
-          <td>4</td>
-          <td>3</td>
-          <td>4</td>
-          <td>3</td>
-          <td>22</td>
-        </tr>
-        <tr>
-          <th className="bg-gray-100 dark:bg-gray-800">San Diego Padres</th>
-          <td>4</td>
-          <td>4</td>
-          <td>1</td>
-          <td>3</td>
-          <td>2</td>
-          <td>3</td>
-          <td>1</td>
-          <td>0</td>
-          <td>3</td>
-          <td>21</td>
-        </tr>
-        <tr>
-          <th className="bg-gray-100 dark:bg-gray-800">Cleveland Indians</th>
-          <td>4</td>
-          <td>2</td>
-          <td>2</td>
-          <td>3</td>
-          <td>0</td>
-          <td>3</td>
-          <td>1</td>
-          <td>0</td>
-          <td>1</td>
-          <td>16</td>
-        </tr>
-        <tr>
-          <th className="bg-gray-100 dark:bg-gray-800">San Francisco Giants</th>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
-          <td>1</td>
-          <td>3</td>
-          <td>4</td>
-          <td>2</td>
-          <td>18</td>
-        </tr>
-        <tr>
-          <th className="bg-gray-100 dark:bg-gray-800">Cincinatti Reds</th>
-          <td>0</td>
-          <td>0</td>
-          <td>4</td>
-          <td>1</td>
-          <td>2</td>
-          <td>0</td>
-          <td>4</td>
-          <td>1</td>
-          <td>4</td>
-          <td>16</td>
-        </tr>
-        <tr>
-          <th className="bg-gray-100 dark:bg-gray-800">Minnesota Twins</th>
-          <td>2</td>
-          <td>4</td>
-          <td>2</td>
-          <td>3</td>
-          <td>2</td>
-          <td>0</td>
-          <td>1</td>
-          <td>2</td>
-          <td>2</td>
-          <td>18</td>
-        </tr>
-        <tr>
-          <th className="bg-gray-100 dark:bg-gray-800">Tampa Bay Rays</th>
-          <td>4</td>
-          <td>4</td>
-          <td>0</td>
-          <td>1</td>
-          <td>2</td>
-          <td>2</td>
-          <td>2</td>
-          <td>2</td>
-          <td>4</td>
-          <td>21</td>
-        </tr>
-        <tr>
-          <th className="bg-gray-100 dark:bg-gray-800">Miami Marlins</th>
-          <td>3</td>
-          <td>0</td>
-          <td>2</td>
-          <td>0</td>
-          <td>1</td>
-          <td>4</td>
-          <td>3</td>
-          <td>3</td>
-          <td>1</td>
-          <td>17</td>
-        </tr>
-        <tr>
-          <th className="bg-gray-100 dark:bg-gray-800">Oakland Athletics</th>
-          <td>3</td>
-          <td>3</td>
-          <td>4</td>
-          <td>2</td>
-          <td>4</td>
-          <td>2</td>
-          <td>2</td>
-          <td>2</td>
-          <td>4</td>
-          <td>26</td>
-        </tr>
-        <tr>
-          <th className="bg-gray-100 dark:bg-gray-800">Detroit Tigers</th>
-          <td>4</td>
-          <td>3</td>
-          <td>2</td>
-          <td>1</td>
-          <td>0</td>
-          <td>2</td>
-          <td>0</td>
-          <td>4</td>
-          <td>2</td>
-          <td>18</td>
-        </tr>
-        <tr>
-          <th className="bg-gray-100 dark:bg-gray-800">Pittsburgh Pirates</th>
-          <td>0</td>
-          <td>4</td>
-          <td>4</td>
-          <td>2</td>
-          <td>2</td>
-          <td>2</td>
-          <td>2</td>
-          <td>4</td>
-          <td>2</td>
-          <td>22</td>
-        </tr>
-        <tr>
-          <th className="bg-gray-100 dark:bg-gray-800">Seattle Mariners</th>
-          <td>2</td>
-          <td>3</td>
-          <td>1</td>
-          <td>2</td>
-          <td>4</td>
-          <td>1</td>
-          <td>1</td>
-          <td>4</td>
-          <td>2</td>
-          <td>20</td>
-        </tr>
-        <tr>
-          <th className="bg-gray-100 dark:bg-gray-800">Atlanta Braves</th>
-          <td>4</td>
-          <td>3</td>
-          <td>2</td>
-          <td>0</td>
-          <td>1</td>
-          <td>3</td>
-          <td>1</td>
-          <td>3</td>
-          <td>4</td>
-          <td>21</td>
-        </tr>
+                  </td>
+                </tr> : null
+              }
+            </>
+          })
+        }
         </tbody>
       </table>
     </div>
