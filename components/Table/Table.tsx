@@ -39,7 +39,8 @@ export const Table: React.FC = () => {
         </tr>
         <tr className="">
           <th className="bg-gray-100 dark:bg-gray-800"/>
-          <td colspan="10">+info addr_test1qzd8nqxxq5j2csg556vj8lw5stwfndfm3u96spulvfx6s7rmadzzye2knwvvfek9242eslxpwgjceh5smumvk2cgmsasy6pen4</td>
+          <td colSpan="10" className="animate-fade">
+            +info addr_test1qzd8nqxxq5j2csg556vj8lw5stwfndfm3u96spulvfx6s7rmadzzye2knwvvfek9242eslxpwgjceh5smumvk2cgmsasy6pen4</td>
 
         </tr>
         <tr>
