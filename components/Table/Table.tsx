@@ -6,6 +6,7 @@ export const Table: React.FC = () => {
   return <div className="md:px-20 lg:px-40"
     >
     <h1>Sidechains list</h1>
+    {/* @ts-ignore*/}
     <div role="region" aria-labelledby="caption" tabIndex="0" style={{maxHeight: '600px'}}>
       <table className="bg-transparent rounded-xl" >
         <thead className="bordered">
@@ -39,6 +40,7 @@ export const Table: React.FC = () => {
         </tr>
         <tr className="">
           <th className="bg-gray-100 dark:bg-gray-800"/>
+          {/* @ts-ignore*/}
           <td colSpan="10" className="animate-fade">
             +info addr_test1qzd8nqxxq5j2csg556vj8lw5stwfndfm3u96spulvfx6s7rmadzzye2knwvvfek9242eslxpwgjceh5smumvk2cgmsasy6pen4</td>
 
