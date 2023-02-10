@@ -1,5 +1,5 @@
 {
-  "name": "cip30demo",
+  "name": "cslweb",
   "private": true,
   "scripts": {
     "dev": "next dev",

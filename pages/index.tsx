@@ -3,14 +3,14 @@ import Head from 'next/head'
 
 import { Header } from '@components/Header';
 import { Footer } from '@components/Footer'
-import { Table } from '@components/Table'
+import { Table } from '@components/Table/Table'
 
 const Home: NextPage = () => {
 
   return (
     <div>
       <Head>
-        <title>CIP-30</title>
+        <title>CSL</title>
       </Head>
       <div id="app" >
         <div className="bg-white dark:bg-black">
