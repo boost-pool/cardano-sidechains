@@ -17,7 +17,7 @@ export const Table: React.FC = () => {
 
   return <div className="md:px-20 lg:px-40"
     >
-    <h1>Sidechains list</h1>
+    <p className="text-2xl text-center pb-8 font-bold text-black dark:text-white">Cardano Sidechains</p>
     {/* @ts-ignore*/}
     <div className="drawer drawer-end">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -59,12 +59,23 @@ export const Table: React.FC = () => {
       <div className="drawer-side bg-transparent/8">
         <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
         <div className="menu p-4 bg-transparent/80 text-base-content w-72 md:w-2/3">
-          <p className="w-80">Description:</p>
+          <p className="w-80 font-black">Description:</p>
           {/* @ts-ignore*/}
           <p className="pr-12 mr-2 md:pr-2 md:mr-4">{selectedChain.description}</p>
           <br/>
+          <p className="w-80 font-black">Goal:</p>
           {/* @ts-ignore*/}
-          <p className="w-80">Projects using {selectedChain.chain}: []</p>
+          <p className="pr-12 mr-2 md:pr-2 md:mr-4">{selectedChain.goal}</p>
+          <p className="w-80 font-black">USPs:</p>
+          {/* @ts-ignore*/}
+          <p className="pr-12 mr-2 md:pr-2 md:mr-4">{selectedChain.USPs}</p>
+          {/* @ts-ignore*/}
+          <p className="w-80 font-black">Wallets:</p>
+          {/* @ts-ignore*/}
+          <p className="pr-12 mr-2 md:pr-2 md:mr-4">{JSON.stringify(selectedChain.walletsCompatibility)}</p>
+          {/* @ts-ignore*/}
+          <p className="w-80 font-black">Projects using {selectedChain.chain}:</p>
+          <p className="pr-12 mr-2 md:pr-2 md:mr-4">[...]</p>
         </div>
       </div>
     </div>
