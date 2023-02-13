@@ -22,6 +22,7 @@ export const Table: React.FC = () => {
     <div className="drawer drawer-end">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
+        {/* @ts-ignore*/}
         <div role="region" aria-labelledby="caption" tabIndex="0" style={{maxHeight: '600px'}}>
           <table className="bg-transparent rounded-xl" >
             <thead className="bordered">
@@ -57,9 +58,13 @@ export const Table: React.FC = () => {
       </div>
       <div className="drawer-side bg-transparent/8">
         <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
-        <div className="menu p-4 bg-transparent/80 text-base-content w-72 md:w-1/2">
+        <div className="menu p-4 bg-transparent/80 text-base-content w-72 md:w-2/3">
           <p className="w-80">Description:</p>
+          {/* @ts-ignore*/}
           <p className="pr-12 mr-2 md:pr-2 md:mr-4">{selectedChain.description}</p>
+          <br/>
+          {/* @ts-ignore*/}
+          <p className="w-80">Projects using {selectedChain.chain}: []</p>
         </div>
       </div>
     </div>
