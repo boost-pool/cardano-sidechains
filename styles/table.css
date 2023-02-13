@@ -64,3 +64,11 @@ caption {
     max-width: 100px !important;
     word-break: break-all;
 }
+
+.drawer {
+    height: auto !important;
+}
+
+.drawer-toggle:checked ~ .drawer-side > .drawer-overlay {
+    opacity: 0;
+}

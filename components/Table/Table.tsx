@@ -9,16 +9,10 @@ export const Table: React.FC = () => {
     return {...item, open: false}
   });
   const [chains, setChains] = useState(updatedList);
+  const [selectedChain, setSelectedChain] = useState({});
 
-  const onClickChain = (chainName: string) => {
-
-    const upds = chains.map(c => {
-      if (c.chain === chainName){
-        c.open = !c.open;
-      }
-      return c;
-    });
-    setChains(upds);
+  const onClickChain = (chain: any) => {
+    setSelectedChain(chain);
   }
 
   return <div className="md:px-20 lg:px-40"
@@ -43,8 +37,8 @@ export const Table: React.FC = () => {
             {
               chains.map((item, index) => {
                 return <> <tr key={index} className="hover:opacity-70">
-                  <th className="bg-gray-100 dark:bg-gray-800" onClick={() => onClickChain(item.chain)}>
-                    <label htmlFor="my-drawer-4" className="drawer-button">
+                  <th className="bg-gray-100 dark:bg-gray-800" onClick={() => onClickChain(item)}>
+                    <label htmlFor="my-drawer-4" className="drawer-button cursor-pointer">
                       {item.chain}
                     </label>
                   </th>
@@ -53,20 +47,6 @@ export const Table: React.FC = () => {
                   <td>{`${item.consensus} ${item.consensusVersion}`}</td>
                   <td><a href={item.url} target="_blank" rel="noreferrer">{item.url}</a></td>
                 </tr>
-                  {
-                    item.open ? <tr className="w-auto">
-                      <th colSpan="3" className="animate-fade" style={{width: '160px'}}>
-                        <p style={{wordWrap: 'break-word', width: '60px'}} className="flex">
-                          fdsvvd{'\n'}svddsfsdsvdsvdfdsvvdsvddsfsdsvdsvdfdsvvdsv
-                          <br/>ddsfsdsvdsvdfdsvvdsvddsfsdsvdsvdfdsvvdsvddsfsdsvdsvd
-                          <br/>fdsvvdsvddsfsdsvdsvdfdsvvdsvddsfsdsvdsvdfdsvvdsvddsfsdsvdsvd</p>
-                        <br/>
-                        <p className="row-details">
-                          ddsfsdsvdsvdfdsvvdsvddsfsdsvdsvdfdsvvdsvddsfsdsvdsvddds<br/>
-                        </p>
-                      </th>
-                    </tr> : null
-                  }
                 </>
               })
             }
@@ -75,12 +55,12 @@ export const Table: React.FC = () => {
 
         </div>
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side bg-transparent/8">
         <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
-        <ul className="menu p-4 bg-transparent/80 text-base-content">
-          <li><a>ddsfsdsvdsvdfdsvvdsvddsfsdsvdsvdfdsvvdsvddsfsdsvdsvddds Item 1</a></li>
-          <li><a>Sidebar Item 2</a></li>
-        </ul>
+        <div className="menu p-4 bg-transparent/80 text-base-content w-72 md:w-1/2">
+          <p className="w-80">Description:</p>
+          <p className="pr-12 mr-2 md:pr-2 md:mr-4">{selectedChain.description}</p>
+        </div>
       </div>
     </div>
     </div>
