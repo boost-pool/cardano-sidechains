@@ -12,7 +12,7 @@
     "consensus": "IBFT",
     "consensusVersion": "2.0",
     "goal": "EVM compatibility",
-    "description": "Milkomeda delivers rollup technologies to leading Layer 1 ecosystems by offering\n the most popular smart contracting language, Solidity, while enhancing inter-blockchain interoperability,\n user experience, and developer traction all at the Layer 2 level.",
+    "description": "Milkomeda delivers rollup technologies to leading Layer 1 ecosystems by offering\n the most popular smart contracting language, Solidity, while enhancing inter-blockchain\n interoperability, user experience, and developer traction all at the Layer 2 level.",
     "USPs": ["wrapped smart contracts support"]
   },
   {
