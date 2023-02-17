@@ -1,4 +1,4 @@
-# cip30-dapp
+# Cardano Sidechains Explorer
 
 ## Introduction
 
